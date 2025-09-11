@@ -197,4 +197,42 @@
         if(m) m.textContent='';
         if(!e.checkValidity()){
           if(m) m.textContent='Please enter a valid email address.'; return;
-       
+       /* ===== v1.1 MOBILE ENHANCEMENTS (safe overrides) ===== */
+
+/* 1) Slide 9: close logo → strapline gap on all screens */
+.logo-wordmark{
+  display:block;                /* kill inline-img baseline gap */
+  margin-bottom:-42px;          /* pull strapline up over logo's transparent canvas */
+}
+
+/* Nudge the body block a hair closer as well (keeps socials unchanged) */
+.body-block{ margin-top:-6px; }
+
+/* 2) Phone-specific tuning */
+@media (max-width: 600px){
+
+  /* Slide 9 logo: keep big and tight on small screens */
+  .logo-wordmark{
+    width:clamp(380px, 88vw, 980px);
+    margin-bottom:-36px;        /* slightly less aggressive than desktop */
+  }
+
+  /* Make the presentation slides fill the phone width and read larger */
+  .slide-img{
+    max-width:100vw;            /* use the full phone width */
+    max-height:none;            /* let width dictate scale (bigger text) */
+  }
+
+  /* Give slide content a touch more presence when height is limited */
+  .slide{ padding-top: calc(var(--topOffset) - 8px); }
+
+  /* Comfortable type on the waitlist block */
+  .strapline{ font-size:clamp(30px, 6.3vw, 58px); }
+  .subline{   font-size:clamp(13px, 3.6vw, 22px); }
+
+  .pre-cta{   font-size:clamp(16px, 4.6vw, 22px); }
+  .finecopy{  font-size:clamp(14px, 3.8vw, 18px); }
+
+  .cta-form input[type=email]{ font-size:clamp(16px, 4.4vw, 20px); }
+  .cta-form button{            font-size:clamp(15px, 4.2vw, 20px); }
+}
