@@ -37,13 +37,10 @@
       display:flex; align-items:center; justify-content:center;
     }
     .slide-img{
-      max-height:calc(100vh - var(--topOffset) - 24px);
-      max-width:min(92vw,1400px);
+      /* Fill the screen more so logos/text inside slides are readable */
+      max-width:100vw;
+      max-height:calc(100vh - var(--topOffset));
       height:auto; width:auto; display:block;
-    }
-    @media (max-width:600px){
-      :root{ --topOffset:68px }
-      .slide-img{ max-width:94vw }
     }
 
     /* ===== Slide 9 (Waitlist) ===== */
@@ -52,20 +49,21 @@
       min-height:calc(100vh - var(--topOffset));
       display:flex; align-items:center; justify-content:center;
       background:#FCEEE4;
-      padding:0 20px 96px; 
+      padding:0 20px 72px;               /* bring socials up slightly */
       scroll-snap-align:start;
     }
     .cta-overlay{
       width:min(96vw,1040px);
       display:flex; flex-direction:column; align-items:center;
-      transform:translateY(-2%);
+      transform:translateY(-1%);         /* subtle optical balance */
     }
 
-    .logo-wordmark {
-      width: clamp(280px, 55vw, 720px);
-      height: auto;
-      margin-bottom: -6px;
-      display: block;
+    /* Logo & spacing lock for Slide 9 */
+    .logo-wordmark{
+      width:clamp(300px, 60vw, 820px);   /* proportionally larger */
+      height:auto;
+      margin-bottom:-16px;               /* close the gap to strapline */
+      display:block;
     }
 
     .body-block{
@@ -104,18 +102,16 @@
     .socials svg{ width:34px; height:34px }
     footer{ margin:18px 0; font-size:13px; opacity:.8; text-align:center }
 
-    /* ===== Mobile font-size adjustments ===== */
-    @media (max-width: 600px) {
-      .slide-img {
-        max-width: 100vw;
-        max-height: none;
-      }
+    /* ===== Mobile improvements ===== */
+    @media (max-width:600px){
+      :root{ --topOffset:68px }
+      .slide-img{ max-width:100vw; max-height:none }  /* maximize readability */
       .strapline { font-size: clamp(28px, 7vw, 48px); }
-      .subline { font-size: clamp(14px, 4.5vw, 22px); }
-      .pre-cta { font-size: clamp(16px, 4.6vw, 22px); }
-      .finecopy { font-size: clamp(14px, 3.8vw, 18px); }
-      .cta-form input[type=email] { font-size: clamp(16px, 4.4vw, 20px); }
-      .cta-form button { font-size: clamp(15px, 4.2vw, 20px); }
+      .subline   { font-size: clamp(14px, 4.5vw, 22px); }
+      .pre-cta   { font-size: clamp(16px, 4.6vw, 22px); }
+      .finecopy  { font-size: clamp(14px, 3.8vw, 18px); }
+      .cta-form input[type=email]{ font-size:clamp(16px,4.4vw,20px) }
+      .cta-form button{ font-size:clamp(15px,4.2vw,20px) }
     }
   </style>
 </head>
@@ -148,8 +144,10 @@
     <!-- ===== Slide 9 (Waitlist) ===== -->
     <section id="waitlist" class="final9-bg" aria-labelledby="h1" aria-describedby="h2">
       <div class="cta-overlay">
+        <!-- Centered logo -->
         <img class="logo-wordmark" src="assets/logo-wordmark.png" alt="SHAADISTYLIST.AI logo" />
 
+        <!-- Body -->
         <div class="body-block">
           <p id="h1" class="strapline">HERITAGE <span>MEETS</span> INNOVATION</p>
           <p id="h2" class="subline">THE FUTURE OF INDIAN COUTURE STARTS HERE</p>
@@ -189,4 +187,42 @@
             </a>
             <!-- AI -->
             <a href="#" aria-label="AI" title="AI">
-              <svg viewBox="0 0 24 24" fill="none" stroke="current
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="10" stroke-width="1.8"></circle>
+                <text x="12" y="16" text-anchor="middle" font-size="11.5" font-weight="800" fill="currentColor" style="letter-spacing:.03em">AI</text>
+              </svg>
+            </a>
+          </div>
+
+          <footer>© 2025 ShaadiStylist.ai · Heritage meets Innovation</footer>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Waitlist form (mock)
+    const f=document.getElementById('waitlistForm'),
+          e=document.getElementById('email'),
+          m=document.getElementById('formMsg');
+    if(f){
+      f.addEventListener('submit',ev=>{
+        ev.preventDefault();
+        if(m) m.textContent='';
+        if(!e.checkValidity()){
+          if(m) m.textContent='Please enter a valid email address.'; return;
+        }
+        alert("Thank you! We'll be in touch.");
+        if(m) m.textContent="Thank you! You're on the list."; f.reset();
+      });
+    }
+    // Arrow key snap-scroll helper (desktop)
+    const main=document.querySelector('main');
+    window.addEventListener('keydown',k=>{
+      if(!main) return;
+      if(k.key==='ArrowDown'){k.preventDefault();main.scrollBy({top:innerHeight,behavior:'smooth'})}
+      if(k.key==='ArrowUp'){k.preventDefault();main.scrollBy({top:-innerHeight,behavior:'smooth'})}
+    });
+  </script>
+</body>
+</html>
