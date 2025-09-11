@@ -6,23 +6,16 @@
   <title>SHAADISTYLIST.AI — Heritage meets Innovation</title>
   <meta name="description" content="ShaadiStylist.ai — AI-powered data visualization & BI for the South Asian fashion and wedding ecosystem. Heritage meets Innovation." />
   <link rel="icon" href="https://favicon.io/favicon.ico" />
-  <!-- Temporary body font until Object Sans is licensed -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --gardenia:#FCEEE4;
-      --charcoal:#2B2B2B;
-      --topOffset:80px; /* desktop header height allowance */
-    }
-
+    :root{ --gardenia:#FCEEE4; --charcoal:#2B2B2B; --topOffset:80px; }
     *{ box-sizing:border-box }
     html,body{
       margin:0; height:100%;
       background:var(--gardenia); color:var(--charcoal);
       font-family:"Object Sans", Manrope, Inter, system-ui, Arial, sans-serif;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
     a{ color:inherit; text-decoration:none }
     a.underline{ text-decoration:underline; text-underline-offset:2px }
@@ -34,36 +27,32 @@
       border-bottom:1px solid rgba(0,0,0,.04);
     }
     .container{ max-width:1200px; margin:0 auto; padding:0 20px; width:100%; display:flex; align-items:center; gap:16px; }
-    .brand img{ height:28px; display:block }
+    /* Hide the tiny wordmark in the nav to remove the “smudge” */
+    .brand{ display:none; }
     .nav{ margin-left:auto; display:flex; gap:16px; font-size:14px }
 
-    /* ===== Slides 1–8 ===== */
-    .wrap{
-      height:100vh; overflow-y:auto;
-      scroll-snap-type:y mandatory; scroll-behavior:smooth;
-    }
+    /* ===== Slides 1–8 (images) ===== */
+    .wrap{ height:100vh; overflow-y:auto; scroll-snap-type:y mandatory; scroll-behavior:smooth }
     .slide{
-      scroll-snap-align:start; min-height:100vh;
-      padding-top:var(--topOffset);
+      scroll-snap-align:start; min-height:100vh; padding-top:var(--topOffset);
       display:flex; align-items:center; justify-content:center;
     }
-
-    /* Image presentation: keep crisp, fill as much as possible without clipping */
     .slide-img{
-      /* Use the full remaining viewport while respecting header */
-      max-height:calc(100vh - var(--topOffset) - 12px);
-      max-width:min(96vw,1400px);
-      width:auto; height:auto; display:block;
-      object-fit:contain; image-rendering:-webkit-optimize-contrast;
+      /* Desktop/tablet: keep generous size */
+      max-height:calc(100vh - var(--topOffset) - 24px);
+      max-width:min(96vw,1600px);
+      height:auto; width:auto; display:block;
     }
 
     /* Mobile legibility boost */
-    @media (max-width: 600px){
-      :root{ --topOffset:68px }                /* slightly taller mobile chrome */
-      .slide{ padding-top:var(--topOffset) }
+    @media (max-width:600px){
+      :root{ --topOffset:68px }
+      /* Make slides fill the viewport width on phones */
       .slide-img{
-        max-width:100vw;                        /* let images breathe horizontally */
-        max-height:calc(100vh - var(--topOffset) - 6px);
+        width:100vw;
+        max-width:100vw;
+        height:auto;
+        max-height:none; /* allow taller so text appears larger */
       }
     }
 
@@ -71,21 +60,21 @@
     .final9-bg{
       margin-top:var(--topOffset);
       min-height:calc(100vh - var(--topOffset));
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      display:flex; align-items:center; justify-content:center;
       background:#FCEEE4;
-      padding:0 20px 92px;
+      padding:0 20px 96px; 
       scroll-snap-align:start;
     }
     .cta-overlay{
       width:min(96vw,1040px);
       display:flex; flex-direction:column; align-items:center;
-      transform:translateY(-2%); /* gentle optical centering */
+      transform:translateY(-1%); /* subtle lift */
     }
-
     .logo-wordmark{
-      width:clamp(380px,65vw,980px);
+      /* bigger, uses tight crop */
+      width:clamp(520px,86vw,1280px);
       height:auto;
-      margin-bottom:-10px; /* 🔒 locked-in tight gap to strapline */
+      margin-bottom:-14px; /* tighter lock-up to reduce gap */
       display:block;
     }
 
@@ -95,45 +84,52 @@
     }
     .strapline{
       margin:0; font-weight:800; letter-spacing:-0.077em; white-space:nowrap;
-      font-size:clamp(32px,4.6vw,58px); line-height:1.03;
+      font-size:clamp(36px,6vw,64px); line-height:1.03;
     }
     .strapline span{ font-weight:400; letter-spacing:-0.02em }
     .subline{
       margin:0; text-transform:uppercase; letter-spacing:.09em; opacity:.95;
-      font-size:clamp(14px,2.3vw,22px); font-weight:400;
+      font-size:clamp(16px,2.6vw,22px); font-weight:400;
     }
 
-    .pre-cta{ margin:12px 0 0; font-size:clamp(17px,2.5vw,22px) }
-    .finecopy{ margin:0; font-size:clamp(14px,2.0vw,18px) }
+    .pre-cta{ margin:12px 0 0; font-size:clamp(16px,2.7vw,22px) }
+    .finecopy{ margin:0; font-size:clamp(15px,2.2vw,18px) }
+
+    /* Ensure minimum readable sizes on small phones */
+    @media (max-width:600px){
+      .subline{ font-size:16px }
+      .pre-cta{ font-size:17px }
+      .finecopy{ font-size:16px }
+    }
 
     .cta-form{
-      display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:10px; width:100%;
+      display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:8px; width:100%;
     }
     .cta-form input[type=email]{
-      flex:1; min-width:300px; max-width:980px;
+      flex:1; min-width:300px; max-width:980px; 
       border:1px solid rgba(0,0,0,.25); border-radius:14px;
       padding:18px 20px; background:#fff; color:var(--charcoal);
-      font-size:clamp(16px,2.1vw,20px); outline:none;
+      font-size:clamp(16px,2vw,20px); outline:none;
     }
     .cta-form button{
       border:0; border-radius:14px; padding:18px 26px; background:var(--charcoal);
-      color:#fff; font-weight:800; cursor:pointer; font-size:clamp(15px,2.1vw,20px);
+      color:#fff; font-weight:800; cursor:pointer; font-size:clamp(15px,2vw,20px);
       white-space:nowrap;
     }
 
     .socials{ display:flex; gap:30px; justify-content:center; align-items:center; margin-top:16px }
     .socials svg{ width:34px; height:34px }
-
     footer{ margin:18px 0; font-size:13px; opacity:.8; text-align:center }
   </style>
 </head>
 <body>
 
-  <!-- ===== Header ===== -->
+  <!-- ===== Header (logo hidden to remove smudge) ===== -->
   <div class="topbar">
     <div class="container">
       <div class="brand">
-        <img src="assets/logo-wordmark-tight.png" alt="SHAADISTYLIST.AI" />
+        <!-- hidden via CSS -->
+        <img src="assets/logo-wordmark.png" alt="SHAADISTYLIST.AI logo" />
       </div>
       <nav class="nav">
         <a href="#s1">Start</a>
@@ -153,34 +149,47 @@
     <section id="s7" class="slide"><img class="slide-img" src="assets/slide7.png" alt="Slide 7" /></section>
     <section id="s8" class="slide"><img class="slide-img" src="assets/slide8.png" alt="Slide 8" /></section>
 
-    <!-- ===== Slide 9 – Waitlist / CTA ===== -->
+    <!-- ===== Slide 9 — Waitlist / CTA ===== -->
     <section id="waitlist" class="final9-bg" aria-labelledby="h1" aria-describedby="h2">
       <div class="cta-overlay">
-        <!-- Centered logo (tight art-board) -->
+        <!-- Centered, tight-crop logo (closes gap) -->
         <img class="logo-wordmark" src="assets/logo-wordmark-tight.png" alt="SHAADISTYLIST.AI logo" />
 
         <div class="body-block">
-          <p id="h1" class="strapline"><span>HERITAGE</span> MEETS <span>INNOVATION</span></p>
+          <p id="h1" class="strapline">HERITAGE <span>MEETS</span> INNOVATION</p>
           <p id="h2" class="subline">THE FUTURE OF INDIAN COUTURE STARTS HERE</p>
 
           <p class="pre-cta">Be the first to access our AI-powered platform</p>
-          <p class="finecopy">Join <strong>500+</strong> on our waitlist. Questions?
-            <a class="underline" href="mailto:hello@shaadistylist.ai">hello@shaadistylist.ai</a>
-          </p>
-
-          <form id="waitlistForm" class="cta-form" novalidate>
-            <input id="email" type="email" required placeholder="you@company.com" />
-            <button type="submit">Join the waitlist</button>
-          </form>
+          <p class="finecopy">Join <strong>500+</strong> on our waitlist. Questions? <a class="underline" href="mailto:hello@shaadistylist.ai">hello@shaadistylist.ai</a></p>
         </div>
-      </div>
 
-      <!-- Social icons (unchanged SVGs go here) -->
-      <div class="socials">
-        <!-- … your existing SVG links … -->
-      </div>
+        <form id="waitlistForm" class="cta-form" novalidate>
+          <input id="email" type="email" required placeholder="you@company.com" />
+          <button type="submit">Join the waitlist</button>
+        </form>
 
-      <footer>© 2025 ShaadiStylist.ai · Heritage meets Innovation</footer>
+        <!-- Socials -->
+        <div class="socials">
+          <!-- LinkedIn -->
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7 0h3.8v2.2h.1c.5-1 1.8-2.2 3.8-2.2 4.1 0 4.9 2.7 4.9 6.2V24h-4v-7.1c0-1.7 0-3.9-2.4-3.9s-2.8 1.9-2.8 3.8V24h-4V8z"/></svg></a>
+          <!-- X / Twitter -->
+          <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.51L7.5 22H4.49L18.244 2zM2 2h3.09l7.36 9.03L9.7 14.5 2 2z"/></svg></a>
+          <!-- Instagram -->
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 4.9.1 6.3.7 1.3.5 2.3 1.4 2.8 2.8.6 1.4.7 3.1.7 6.3s-.1 4.9-.7 6.3c-.5 1.3-1.4 2.3-2.8 2.8-1.4.6-3.1.7-6.3.7s-4.9-.1-6.3-.7c-1.3-.5-2.3-1.4-2.8-2.8C2.2 16.9 2.1 15.2 2.1 12s.1-4.9.7-6.3c.5-1.3 1.4-2.3 2.8-2.8C7 2.3 8.7 2.2 12 2.2zm0 3.3a6.5 6.5 0 100 13 6.5 6.5 0 000-13zm7.1-.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM12 8a4 4 0 110 8 4 4 0 010-8z"/></svg></a>
+          <!-- Pinterest -->
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.53 2 3 5.64 3 9.86c0 2.36 1.33 5.28 4.17 6a.9.9 0 00.86-.6c.08-.22.27-.78.35-1.01.12-.32.07-.43-.18-.71-.83-.93-1.36-2.12-1.36-3.82 0-4.93 6.38-8.44 10.73-4.93 2.59 2.19 2.04 9.93-2.58 10.6-2.88.45-4.06-2.05-3.52-4.06.83-3 2.43-6.22 1.65-8.36-1.21-3.31-5.87-.69-5.41 2.23.07.45.34 1.2.52 1.54-.39 1.59-1.23 4.02-1.4 4.8-.42 1.83.09 6.61.53 7.95.16.5.46.57.69.21.28-.47 1.81-2.39 2.36-4.59.15-.58.87-3.6.87-3.6.43.82 1.68 1.55 3.01 1.55 3.97 0 6.67-3.87 6.67-8.97C20.67 5.83 16.86 2 12.04 2z"/></svg></a>
+          <!-- WhatsApp -->
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.9.5 1 5.4 1 11.5c0 2 .6 3.9 1.7 5.6L1 23l6-1.6c1.6.9 3.5 1.4 5.4 1.4 6.1 0 11-4.9 11-11S18.1.5 12 .5zm6.5 15.9c-.3.9-1.8 1.7-2.5 1.7-.6 0-1.3 0-3.5-1-2-1-3.3-2.9-3.4-3-.1-.1-.8-1.1-.8-2.1 0-1 .5-1.5.7-1.7.2-.2.4-.3.6-.3h.5c.2 0 .4 0 .6.5.2.5.8 1.7.9 1.8.1.1.1.3 0 .4l-.3.5c-.1.1-.2.3-.1.5.2.3.8 1.3 1.8 2 .8.5 1.4.7 1.7.8.2.1.4.1.6-.1l.6-.8c.2-.2.3-.2.5-.1.2.1 1.4.6 1.6.7.2.1.4.2.4.4 0 .2 0 1-.3 1.9z"/></svg></a>
+          <!-- AI -->
+          <a href="#" aria-label="AI">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="10"></circle><text x="8.6" y="16" font-size="8" fill="currentColor">AI</text>
+            </svg>
+          </a>
+        </div>
+
+        <footer>© 2025 ShaadiStylist.ai · Heritage meets Innovation</footer>
+      </div>
     </section>
   </main>
 </body>
