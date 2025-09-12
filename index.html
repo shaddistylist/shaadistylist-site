@@ -6,9 +6,7 @@
   <title>SHAADISTYLIST.AI — Heritage meets Innovation</title>
   <meta name="description" content="ShaadiStylist.ai — AI-powered data visualization & BI for the South Asian fashion and wedding ecosystem. Heritage meets Innovation." />
   <link rel="icon" href="https://favicon.io/favicon.ico" />
-  <!-- Temporary body font until Object Sans is licensed -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-
   <style>
     :root{ --gardenia:#FCEEE4; --charcoal:#2B2B2B; --topOffset:80px; }
     *{ box-sizing:border-box }
@@ -21,7 +19,7 @@
     a{ color:inherit; text-decoration:none }
     a.underline{ text-decoration:underline; text-underline-offset:2px }
 
-    /* ===== Top Bar (no logo here to avoid smudge) ===== */
+    /* ===== Top Bar — NO LOGO (kills smudge) ===== */
     .topbar{
       position:fixed; inset:0 0 auto 0; height:64px; z-index:10;
       display:flex; align-items:center; background:var(--gardenia);
@@ -30,7 +28,7 @@
     .container{ max-width:1200px; margin:0 auto; padding:0 20px; width:100%; display:flex; align-items:center; gap:16px; }
     .nav{ margin-left:auto; display:flex; gap:16px; font-size:14px }
 
-    /* ===== Slides 1–8 (images) ===== */
+    /* ===== Slides 1–8 ===== */
     .wrap{ height:100vh; overflow-y:auto; scroll-snap-type:y mandatory; scroll-behavior:smooth }
     .slide{
       scroll-snap-align:start; min-height:100vh; padding-top:var(--topOffset);
@@ -39,14 +37,12 @@
     .slide-img{
       max-height:calc(100vh - var(--topOffset) - 24px);
       max-width:min(96vw,1600px);
-      height:auto; width:auto; display:block;
-      object-fit:contain;
+      height:auto; width:auto; display:block; object-fit:contain;
     }
+    /* Phone: fill width so text is legible */
     @media (max-width:600px){
       :root{ --topOffset:68px }
-      .slide-img{
-        width:100vw; max-width:100vw; height:auto; max-height:none;
-      }
+      .slide-img{ width:100vw; max-width:100vw; height:auto; max-height:none; }
     }
 
     /* ===== Slide 9 (Waitlist) ===== */
@@ -61,17 +57,20 @@
     .cta-overlay{
       width:min(96vw,1040px);
       display:flex; flex-direction:column; align-items:center;
-      transform:translateY(-1%);
+      transform:translateY(-1%); /* subtle lift */
     }
+    /* Tight-crop logo + tighter lock-up */
     .logo-wordmark{
       width:clamp(520px,86vw,1280px);
       height:auto;
-      margin-bottom:-14px; /* tighten gap to strapline */
+      margin:0 0 -16px 0; /* reduce gap to strapline */
       display:block;
     }
+
     .body-block{
       display:flex; flex-direction:column; align-items:center; justify-content:center;
       gap:10px; width:100%; text-align:center;
+      margin-top:-4px; /* micro-tuck body upward */
     }
     .strapline{
       margin:0; font-weight:800; letter-spacing:-0.077em; white-space:nowrap;
@@ -82,7 +81,7 @@
       margin:0; text-transform:uppercase; letter-spacing:.09em; opacity:.95;
       font-size:clamp(16px,2.6vw,22px); font-weight:400;
     }
-    .pre-cta{ margin:12px 0 0; font-size:clamp(16px,2.7vw,22px) }
+    .pre-cta{ margin:10px 0 0; font-size:clamp(16px,2.7vw,22px) }
     .finecopy{ margin:0; font-size:clamp(15px,2.2vw,18px) }
     @media (max-width:600px){
       .subline{ font-size:16px }
@@ -112,7 +111,7 @@
 </head>
 <body>
 
-  <!-- ===== Header (no logo to prevent smudge) ===== -->
+  <!-- ===== Header — NO LOGO ===== -->
   <div class="topbar">
     <div class="container">
       <nav class="nav">
@@ -136,8 +135,8 @@
     <!-- ===== Slide 9 — Waitlist / CTA ===== -->
     <section id="waitlist" class="final9-bg" aria-labelledby="h1" aria-describedby="h2">
       <div class="cta-overlay">
-        <!-- tight-crop logo (closes the gap) -->
-        <img class="logo-wordmark" src="assets/logo-wordmark-tightcrop.png?v=2" alt="SHAADISTYLIST.AI logo" />
+        <!-- Use your tight-crop logo asset -->
+        <img class="logo-wordmark" src="assets/logo-wordmark-tightcrop.png?v=3" alt="SHAADISTYLIST.AI logo" />
 
         <div class="body-block">
           <p id="h1" class="strapline">HERITAGE <span>MEETS</span> INNOVATION</p>
