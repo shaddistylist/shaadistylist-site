@@ -26,6 +26,18 @@
     a{ color:inherit; text-decoration:none }
     a.underline{ text-decoration:underline; text-underline-offset:2px }
     
+    /* === Mobile full-bleed slides (fixes side borders / alignment) === */
+@media (max-width:600px){
+  :root{ --topOffset:64px; }                 /* small header gap */
+  .slide{ padding-top:var(--topOffset); }    /* keep vertical offset */
+  .slide-img{
+    width:100vw;           /* fill screen width */
+    max-width:100vw;       /* prevent gutters */
+    height:auto;           /* preserve aspect */
+    max-height:none;       /* allow full image height */
+    display:block;
+  }
+}
 
     /* ===== Top Bar — links only (NO LOGO) ===== */
     .topbar{
