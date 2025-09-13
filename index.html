@@ -25,6 +25,7 @@
     }
     a{ color:inherit; text-decoration:none }
     a.underline{ text-decoration:underline; text-underline-offset:2px }
+    @media (max-width:600px){ .slide{ padding-top:0 !important; } }
 
     /* ===== Top Bar — links only (NO LOGO) ===== */
     .topbar{
@@ -104,23 +105,17 @@
     .socials svg{ width:34px; height:34px }
     footer{ margin:18px 0; font-size:13px; opacity:.8; text-align:center; background:var(--gardenia); color:var(--charcoal); }
 
-    /* ===== MOBILE ONLY (single source of truth) ===== */
-    @media (max-width:600px){
-      :root{ --topOffset:64px; }                 /* smaller offset under header */
-      .slide{ padding-top:var(--topOffset); }    /* keep vertical spacing */
-      .slide-img{
-        width:100vw;           /* fill screen width */
-        max-width:100vw;       /* prevent gutters */
-        height:auto;           /* keep aspect ratio */
-        max-height:none;       /* no artificial cap */
-        display:block;
-      }
-      .final9-bg{ background:var(--lemongrass); }   /* lemongrass on mobile only */
-      footer{ background:var(--lemongrass); }       /* match footer to phone slides */
-    }
-  </style>
-</head>
-<body>
+   /* === Mobile full-bleed slides (no top gap) === */
+@media (max-width:600px){
+  .slide{ padding-top:0 !important; } /* remove mobile top gap */
+  .slide-img{
+    width:100vw;
+    max-width:100vw;
+    height:auto;
+    max-height:none;
+    display:block;
+  }
+}
 
   <!-- ===== Header (links only) ===== -->
   <div class="container">
