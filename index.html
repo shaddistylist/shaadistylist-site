@@ -113,7 +113,7 @@
     /* ===== Mobile readability tweaks ===== */
     @media (max-width:600px){
       :root{ --topOffset:64px }
-      .slide-img{ max-width:97vw; }
+      .slide-img{ max-width:98.5vw; } /* makes slides 1–8 larger on mobile */
       .cta-overlay{ transform:translateY(-2%); }
       .logo-wordmark{ width:clamp(320px,82vw,860px); margin-bottom:-12px; }
       .strapline{ font-size:clamp(30px,7.2vw,52px); }
@@ -149,7 +149,7 @@
     <section id="waitlist" class="final9-bg" aria-labelledby="h1" aria-describedby="h2">
       <div class="cta-overlay">
         <!-- Your tight-cropped wordmark PNG (Object Sans) -->
-        <img class="logo-wordmark" src="assets/logo-wordmark-tightcrop.png" alt="SHAADISTYLIST.AI logo" />
+      <img class="logo-wordmark" src="assets/logo-wordmark-tightcrop.png" alt="SHAADISTYLIST.AI logo" />
 
         <div class="body-block">
           <p id="h1" class="strapline">HERITAGE <span>MEETS</span> INNOVATION</p>
@@ -235,3 +235,29 @@
   </script>
 </body>
 </html>
+/* ===== Mobile adjustments (≤600px) ===== */
+@media (max-width: 600px) {
+  .slide-img {
+    max-width: 98vw; /* make slide images fill more of the viewport */
+  }
+
+  .strapline {
+    font-size: 22px;  /* scale up slightly for legibility */
+    letter-spacing: -0.05em;
+  }
+
+  .subline {
+    font-size: 13px;
+  }
+
+  .cta-form input[type=email] {
+    min-width: 260px;
+    font-size: 14px;
+    padding: 14px 16px;
+  }
+
+  .cta-form button {
+    font-size: 14px;
+    padding: 14px 18px;
+  }
+}
