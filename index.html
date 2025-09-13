@@ -43,14 +43,12 @@
     }
     .slide picture, .slide img{ display:block; }
     .slide-img{
-      max-height:calc(100vh - var(--topOffset) - 24px);
-      max-width:min(92vw,1400px);
-      height:auto; width:auto;
-    }
-    @media (max-width:600px){
-      :root{ --topOffset:68px }
-      .slide-img{ max-width:97vw }
-    }
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+    
 
     /* ===== Slide 1 logo overlay (local only, no header logo) ===== */
     #s1{ position:relative; }
@@ -130,7 +128,6 @@
 <body>
 
   <!-- ===== Header (links only) ===== -->
-  <div class="topbar">
     <div class="container">
       <nav class="nav">
         <a href="#s1">Start</a>
