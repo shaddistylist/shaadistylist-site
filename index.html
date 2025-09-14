@@ -52,7 +52,31 @@
       }
       footer{ background:var(--lemongrass) }
     }
+/* ===== iOS/Safari/Brave fix: make slides 1–8 full-bleed ===== */
+@supports (-webkit-touch-callout: none) {  /* WebKit-only */
+  @media (max-width:600px){
+    .wrap{ height:100svh; }                 /* stable viewport height on iOS */
+    .slide{ min-height:100svh; padding:0; }  /* kill the gaps on iOS */
 
+    /* only slides 1–8 */
+    #s1 .slide-img,
+    #s2 .slide-img,
+    #s3 .slide-img,
+    #s4 .slide-img,
+    #s5 .slide-img,
+    #s6 .slide-img,
+    #s7 .slide-img,
+    #s8 .slide-img{
+      width:100vw;
+      height:100svh;
+      max-width:100vw;
+      max-height:100svh;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+    }
+  }
+}
     /* Final slide (9) */
     .final9-bg{
       min-height:100vh;
