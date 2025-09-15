@@ -80,66 +80,59 @@
  @media (max-width:600px){
   .topbar { background: var(--lemongrass); }
 }
-    /* Final slide (9) */
-    .final9-bg{
-      min-height:100vh;
-      display:flex; align-items:center; justify-content:center;
-      background:var(--gardenia);
-      padding:0 20px 96px;
-      scroll-snap-align:start;
-    }
-    @media (max-width:600px){
-      .final9-bg{ background:var(--lemongrass); }
-    }
-    .cta-overlay{
-      width:min(96vw,1040px);
-      display:flex; flex-direction:column; align-items:center;
-      transform:translateY(-2%); /* subtle nudge up */
-    }
-    .logo-wordmark{
-      width:clamp(380px,65vw,980px);
-      height:auto;
-      margin-bottom:-10px; /* tight locked-in gap */
-      display:block;
-    }
-    .body-block{
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      gap:10px; width:100%; text-align:center;
-    }
-    .strapline{
-      margin:0; font-weight:800; letter-spacing:-0.077em; white-space:nowrap;
-      font-size:clamp(32px,4.2vw,58px); line-height:1.03;
-    }
-    .strapline span{ font-weight:400; letter-spacing:-0.02em } /* “MEETS” not bold */
-    .subline{
-      margin:0; text-transform:uppercase; letter-spacing:.09em; opacity:.95;
-      font-size:clamp(14px,2.2vw,22px); font-weight:400;
-    }
-    .pre-cta{ margin:12px 0 0; font-size:clamp(17px,2.4vw,22px) }
-    .finecopy{ margin:0; font-size:clamp(14px,1.9vw,18px) }
+   <!-- Slide 9 — Waitlist -->
+<section id="waitlist" class="final9-bg" aria-labelledby="h1" aria-describedby="h2">
+  <div class="cta-overlay">
+    <!-- Locked-in tightcrop logo -->
+    <img class="logo-wordmark" src="assets/logo-wordmark-tightcrop.png" alt="SHAADISTYLIST.AI logo" />
 
-    .cta-form{
-      display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:8px; width:100%;
-    }
-    .cta-form input[type=email]{
-      flex:1; min-width:300px; max-width:980px;
-      border:1px solid rgba(0,0,0,.25); border-radius:14px;
-      padding:18px 20px; background:#fff; color:var(--charcoal);
-      font-size:clamp(16px,2vw,20px); outline:none;
-    }
-    .cta-form button{
-      border:0; border-radius:14px; padding:18px 26px; background:var(--charcoal);
-      color:#fff; font-weight:800; cursor:pointer; font-size:clamp(15px,2vw,20px);
-      white-space:nowrap;
-    }
+    <div class="body-block">
+      <p id="h1" class="strapline">HERITAGE <span>MEETS</span> INNOVATION</p>
+      <p id="h2" class="subline">THE FUTURE OF INDIAN COUTURE STARTS HERE</p>
 
-    .socials{ display:flex; gap:30px; justify-content:center; align-items:center; margin-top:16px }
-    .socials svg{ width:34px; height:34px }
-    footer{ margin:18px 0; font-size:13px; opacity:.8; text-align:center }
-  </style>
-</head>
-<body>
+      <p class="pre-cta">Be the first to access our AI-powered platform</p>
+      <p class="finecopy">Join <strong>500+</strong> on our waitlist. Questions?
+        <a class="underline" href="mailto:hello@shaadistylist.ai">hello@shaadistylist.ai</a>
+      </p>
 
+      <!-- WAITLIST FORM (uses your existing .cta-form styles) -->
+      <form id="waitlistForm"
+            action="https://docs.google.com/forms/d/e/1FAIpQLScnL2vHwu82SpBdPks-9F_p-KzKXJx_S3ElwalQyF7cv8Tr6Q/formResponse"
+            method="POST" target="hidden_iframe">
+        <div class="cta-form">
+          <input type="email" name="entry.1801392637" required placeholder="you@company.com" aria-label="Email address" />
+          <button type="submit" class="join-btn">Join the waitlist</button>
+        </div>
+        <p class="finecopy" style="margin-top:8px;">We respect your privacy. No spam. Unsubscribe anytime.</p>
+      </form>
+
+      <!-- Hidden iframe to swallow Google's redirect -->
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+      <!-- Simple success feedback -->
+      <script>
+        (function () {
+          var submitted = false;
+          var form = document.getElementById('waitlistForm');
+          var iframe = document.getElementById('hidden_iframe');
+          if (!form || !iframe) return;
+
+          form.addEventListener('submit', function () {
+            submitted = true;
+          });
+
+          iframe.addEventListener('load', function () {
+            if (submitted) {
+              alert("Thank you! We'll be in touch.");
+              form.reset();
+              submitted = false;
+            }
+          });
+        })();
+      </script>
+
+      <!-- Socials (unchanged)… -->
+      <!-- … keep your existing social icons here … -->
   <!-- Header links only (kept minimal; no logo) -->
   <div class="nav">
     <a href="#s1">Start</a>
