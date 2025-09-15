@@ -166,11 +166,13 @@
             action="https://docs.google.com/forms/d/e/1FAIpQLScnL2vHwu82SpBdPks-9F_p-KzKXJx_S3ElwalQyF7cv8Tr6Q/formResponse"
             method="POST" target="hidden_iframe">
             <div class="cta-form">
-              <input type="email" name="entry.1801392637" required placeholder="you@company.com" aria-label="Email address" />
-              <button type="submit">Join the waitlist</button>
-            </div>
-            <p class="finecopy" style="margin-top:8px;">We respect your privacy. No spam. Unsubscribe anytime.</p>
-          </form>
+              <input id="email"
+  name="entry.1801392637"
+  type="email"
+  required
+  placeholder="you@company.com"
+  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+  title="Please enter a valid email address (example: name@domain.com)" />
 
           <!-- Hidden iframe -->
           <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
