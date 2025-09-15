@@ -161,48 +161,49 @@
             <a class="underline" href="mailto:hello@shaadistylist.ai">hello@shaadistylist.ai</a>
           </p>
 
-          <!-- Waitlist form -->
-          <form id="waitlistForm"
-            action="https://docs.google.com/forms/d/e/1FAIpQLScnL2vHwu82SpBdPks-9F_p-KzKXJx_S3ElwalQyF7cv8Tr6Q/formResponse"
-            method="POST" target="hidden_iframe">
-            <div class="cta-form">
-              <input id="email"
-  name="entry.1801392637"
-  type="email"
-  required
-  placeholder="you@company.com"
-  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-  title="Please enter a valid email address (example: name@domain.com)" />
+        <!-- Waitlist form -->
+<form id="waitlistForm"
+  action="https://docs.google.com/forms/d/e/1FAIpQLScnL2vHwu82SpBdPks-9F_p-KzKXJx_S3ElwalQyF7cv8Tr6Q/formResponse"
+  method="POST" target="hidden_iframe">
 
-          <!-- Hidden iframe -->
-          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+  <div class="cta-form">
+    <input id="email"
+      name="entry.1801392637"
+      type="email"
+      required
+      placeholder="you@company.com"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+      title="Please enter a valid email address (example: name@domain.com)" />
 
-          <!-- Success message script -->
-          <script>
-            (function () {
-              var submitted = false;
-              var form = document.getElementById('waitlistForm');
-              var iframe = document.getElementById('hidden_iframe');
-              if (!form || !iframe) return;
+    <button type="submit">Join the waitlist</button>
+  </div>
 
-              form.addEventListener('submit', function () {
-                submitted = true;
-              });
+  <p class="finecopy" style="margin-top:8px;">
+    We respect your privacy. No spam. Unsubscribe anytime.
+  </p>
+</form>
 
-              iframe.addEventListener('load', function () {
-                if (submitted) {
-                  alert("Thank you! We'll be in touch.");
-                  form.reset();
-                  submitted = false;
-                }
-              });
-            })();
-          </script>
+<!-- Hidden iframe -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-          <!-- Keep your socials here (unchanged) -->
-        </div>
-      </div>
-    </section>
-  </main>
-</body>
-</html>
+<!-- Success message script -->
+<script>
+  (function () {
+    var submitted = false;
+    var form = document.getElementById('waitlistForm');
+    var iframe = document.getElementById('hidden_iframe');
+    if (!form || !iframe) return;
+
+    form.addEventListener('submit', function () {
+      submitted = true;
+    });
+
+    iframe.addEventListener('load', function () {
+      if (submitted) {
+        alert("Thank you! We'll be in touch.");
+        form.reset();
+        submitted = false;
+      }
+    });
+  })();
+</script>
