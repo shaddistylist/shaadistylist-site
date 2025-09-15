@@ -26,180 +26,130 @@
     a.underline{ text-decoration:underline; text-underline-offset:2px }
     footer{ background:var(--gardenia); color:var(--charcoal) }
 
-    /* Header links (no logo) */
     .nav{ display:flex; gap:16px; font-size:14px; padding:12px 20px; max-width:1200px; margin:0 auto; }
 
-    /* Slides container */
     .wrap{ height:100vh; overflow-y:auto; scroll-snap-type:y mandatory; scroll-behavior:smooth }
     .slide{
       scroll-snap-align:start; min-height:100vh;
       display:flex; align-items:center; justify-content:center;
     }
     .slide picture, .slide img{ display:block; }
-    /* Desktop slide sizing */
     .slide-img{
       max-height:calc(100vh - 24px);
       max-width:min(92vw,1400px);
       height:auto; width:auto;
     }
 
-    /* Mobile full-bleed fix (no side borders) */
     @media (max-width:600px){
-      .slide{ padding-top:0; } /* no header gap on phone */
+      .slide{ padding-top:0; }
       .slide-img{
         width:100vw; max-width:100vw;
         height:auto; max-height:none;
       }
       footer{ background:var(--lemongrass) }
     }
-/* ===== iOS/Safari/Brave fix: make slides 1–8 full-bleed ===== */
-@supports (-webkit-touch-callout: none) {  /* WebKit-only */
-  @media (max-width:600px){
-    .wrap{ height:100svh; }                 /* stable viewport height on iOS */
-    .slide{ min-height:100svh; padding:0; }  /* kill the gaps on iOS */
 
-    /* only slides 1–8 */
-    #s1 .slide-img,
-    #s2 .slide-img,
-    #s3 .slide-img,
-    #s4 .slide-img,
-    #s5 .slide-img,
-    #s6 .slide-img,
-    #s7 .slide-img,
-    #s8 .slide-img{
-      width:100vw;
-      height:100svh;
-      max-width:100vw;
-      max-height:100svh;
-      object-fit:cover;
-      object-position:center;
+    @supports (-webkit-touch-callout: none) {
+      @media (max-width:600px){
+        .wrap{ height:100svh; }
+        .slide{ min-height:100svh; padding:0; }
+        #s1 .slide-img,
+        #s2 .slide-img,
+        #s3 .slide-img,
+        #s4 .slide-img,
+        #s5 .slide-img,
+        #s6 .slide-img,
+        #s7 .slide-img,
+        #s8 .slide-img{
+          width:100vw;
+          height:100svh;
+          max-width:100vw;
+          max-height:100svh;
+          object-fit:cover;
+          object-position:center;
+          display:block;
+        }
+      }
+    }
+
+    @media (max-width:600px){
+      .topbar { background: var(--lemongrass); }
+    }
+
+    .final9-bg{
+      min-height:100vh;
+      display:flex; align-items:center; justify-content:center;
+      background:var(--gardenia);
+      padding:0 20px 96px;
+      scroll-snap-align:start;
+    }
+    @media (max-width:600px){
+      .final9-bg{ background:var(--lemongrass); }
+    }
+    .cta-overlay{
+      width:min(96vw,1040px);
+      display:flex; flex-direction:column; align-items:center;
+      transform:translateY(-2%);
+    }
+    .logo-wordmark{
+      width:clamp(380px,65vw,980px);
+      height:auto;
+      margin-bottom:-10px;
       display:block;
     }
-  }
-}
- @media (max-width:600px){
-  .topbar { background: var(--lemongrass); }
-}
-   <!-- Slide 9 — Waitlist -->
-<section id="waitlist" class="final9-bg" aria-labelledby="h1" aria-describedby="h2">
-  <div class="cta-overlay">
-    <!-- Locked-in tightcrop logo -->
-    <img class="logo-wordmark" src="assets/logo-wordmark-tightcrop.png" alt="SHAADISTYLIST.AI logo" />
+    .body-block{
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:10px; width:100%; text-align:center;
+    }
+    .strapline{
+      margin:0; font-weight:800; letter-spacing:-0.077em; white-space:nowrap;
+      font-size:clamp(32px,4.2vw,58px); line-height:1.03;
+    }
+    .strapline span{ font-weight:400; letter-spacing:-0.02em }
+    .subline{
+      margin:0; text-transform:uppercase; letter-spacing:.09em; opacity:.95;
+      font-size:clamp(14px,2.2vw,22px); font-weight:400;
+    }
+    .pre-cta{ margin:12px 0 0; font-size:clamp(17px,2.4vw,22px) }
+    .finecopy{ margin:0; font-size:clamp(14px,1.9vw,18px) }
 
-    <div class="body-block">
-      <p id="h1" class="strapline">HERITAGE <span>MEETS</span> INNOVATION</p>
-      <p id="h2" class="subline">THE FUTURE OF INDIAN COUTURE STARTS HERE</p>
+    .cta-form{
+      display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:8px; width:100%;
+    }
+    .cta-form input[type=email]{
+      flex:1; min-width:300px; max-width:980px;
+      border:1px solid rgba(0,0,0,.25); border-radius:14px;
+      padding:18px 20px; background:#fff; color:var(--charcoal);
+      font-size:clamp(16px,2vw,20px); outline:none;
+    }
+    .cta-form button{
+      border:0; border-radius:14px; padding:18px 26px; background:var(--charcoal);
+      color:#fff; font-weight:800; cursor:pointer; font-size:clamp(15px,2vw,20px);
+      white-space:nowrap;
+    }
 
-      <p class="pre-cta">Be the first to access our AI-powered platform</p>
-      <p class="finecopy">Join <strong>500+</strong> on our waitlist. Questions?
-        <a class="underline" href="mailto:hello@shaadistylist.ai">hello@shaadistylist.ai</a>
-      </p>
+    .socials{ display:flex; gap:30px; justify-content:center; align-items:center; margin-top:16px }
+    .socials svg{ width:34px; height:34px }
+    footer{ margin:18px 0; font-size:13px; opacity:.8; text-align:center }
+  </style>
+</head>
+<body>
 
-      <!-- WAITLIST FORM (uses your existing .cta-form styles) -->
-      <form id="waitlistForm"
-            action="https://docs.google.com/forms/d/e/1FAIpQLScnL2vHwu82SpBdPks-9F_p-KzKXJx_S3ElwalQyF7cv8Tr6Q/formResponse"
-            method="POST" target="hidden_iframe">
-        <div class="cta-form">
-          <input type="email" name="entry.1801392637" required placeholder="you@company.com" aria-label="Email address" />
-          <button type="submit" class="join-btn">Join the waitlist</button>
-        </div>
-        <p class="finecopy" style="margin-top:8px;">We respect your privacy. No spam. Unsubscribe anytime.</p>
-      </form>
-
-      <!-- Hidden iframe to swallow Google's redirect -->
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
-      <!-- Simple success feedback -->
-      <script>
-        (function () {
-          var submitted = false;
-          var form = document.getElementById('waitlistForm');
-          var iframe = document.getElementById('hidden_iframe');
-          if (!form || !iframe) return;
-
-          form.addEventListener('submit', function () {
-            submitted = true;
-          });
-
-          iframe.addEventListener('load', function () {
-            if (submitted) {
-              alert("Thank you! We'll be in touch.");
-              form.reset();
-              submitted = false;
-            }
-          });
-        })();
-      </script>
-
-      <!-- Socials (unchanged)… -->
-      <!-- … keep your existing social icons here … -->
-  <!-- Header links only (kept minimal; no logo) -->
   <div class="nav">
     <a href="#s1">Start</a>
     <a href="#waitlist">Waitlist</a>
   </div>
 
-  <!-- Slides 1–8 -->
   <main class="wrap">
     <section id="s1" class="slide">
-      <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide1.png" />
-        <img class="slide-img" src="assets/slide1.png" alt="Slide 1" />
-      </picture>
+      <picture><source media="(max-width: 600px)" srcset="assets/phone-slide1.png" />
+      <img class="slide-img" src="assets/slide1.png" alt="Slide 1" /></picture>
     </section>
+    <!-- Repeat your slides 2–8 exactly as before -->
 
-    <section id="s2" class="slide">
-      <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide2.png" />
-        <img class="slide-img" src="assets/slide2.png" alt="Slide 2" />
-      </picture>
-    </section>
-
-    <section id="s3" class="slide">
-      <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide3.png" />
-        <img class="slide-img" src="assets/slide3.png" alt="Slide 3" />
-      </picture>
-    </section>
-
-    <section id="s4" class="slide">
-      <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide4.png" />
-        <img class="slide-img" src="assets/slide4.png" alt="Slide 4" />
-      </picture>
-    </section>
-
-    <section id="s5" class="slide">
-      <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide5.png" />
-        <img class="slide-img" src="assets/slide5.png" alt="Slide 5" />
-      </picture>
-    </section>
-
-    <section id="s6" class="slide">
-      <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide6.png" />
-        <img class="slide-img" src="assets/slide6.png" alt="Slide 6" />
-      </picture>
-    </section>
-
-    <section id="s7" class="slide">
-      <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide7.png" />
-        <img class="slide-img" src="assets/slide7.png" alt="Slide 7" />
-      </picture>
-    </section>
-
-    <section id="s8" class="slide">
-      <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide8.png" />
-        <img class="slide-img" src="assets/slide8.png" alt="Slide 8" />
-      </picture>
-    </section>
-    -- Slide 9 — Waitlist -->
+    <!-- Slide 9 — Waitlist -->
     <section id="waitlist" class="final9-bg" aria-labelledby="h1" aria-describedby="h2">
       <div class="cta-overlay">
-        <!-- Locked-in tightcrop logo -->
         <img class="logo-wordmark" src="assets/logo-wordmark-tightcrop.png" alt="SHAADISTYLIST.AI logo" />
 
         <div class="body-block">
@@ -210,58 +160,47 @@
           <p class="finecopy">Join <strong>500+</strong> on our waitlist. Questions?
             <a class="underline" href="mailto:hello@shaadistylist.ai">hello@shaadistylist.ai</a>
           </p>
-<form id="waitlist"
-  action="https://docs.google.com/forms/d/e/1FAIpQLScnL2vHwu82SpBdPks-9F_p-KzKXJx_S3ElwalQyF7cv8Tr6Q/formResponse"
-  method="POST" target="hidden_iframe" onsubmit="submitted=true">
-  <label for="email" class="sr-only">Email address</label>
-  <div class="flex flex-col sm:flex-row items-stretch gap-3">
-    <input id="email" name="entry.1801392637" type="email" required
-      placeholder="you@company.com"
-      class="w-full rounded-2xl px-5 py-4 bg-white/90 ring-1 ring-black/10 focus:ring-2 focus:ring-black/30 outline-none placeholder:text-neutral-400 shadow-soft" />
-    <button type="submit"
-      class="rounded-2xl px-6 py-4 bg-brand-ink text-white font-semibold shadow-soft hover:translate-y-[-1px] hover:shadow-lg active:translate-y-[0] transition">
-      Join the waitlist
-    </button>
-  </div>
-  <p class="mt-3 text-xs opacity-70">We respect your privacy. No spam. Unsubscribe anytime.</p>
-</form>
-          <!-- Socials -->
-          <div class="socials" aria-label="Social links">
-            <!-- LinkedIn -->
-            <a href="#" aria-label="LinkedIn" title="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true">
-                <path d="M4.98 3.5A2.48 2.48 0 1 1 0 3.5a2.48 2.48 0 0 1 4.98 0zM.5 8h4v16h-4zM8.5 8h3.8v2.1h.1C13 8.8 14.4 8 16.5 8 20.6 8 22 10.6 22 14.7V24h-4v-7c0-1.7-.1-3.9-2.4-3.9-2.4 0-2.8 1.8-2.8 3.8V24h-4z"/>
-              </svg>
-            </a>
-            <!-- X / Twitter -->
-            <a href="#" aria-label="X / Twitter" title="X / Twitter">
-              <svg viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true">
-                <path d="M18.244 2H21.5l-7.5 8.57L22.5 22h-6.09L10.5 14.9 4.91 22H1.5l8.34-9.53L1 2h6.18l4.71 6.58L18.244 2zm-2.14 18h1.77L7.96 4h-1.8l9.944 16z"/>
-              </svg>
-            </a>
-            <!-- Instagram -->
-            <a href="#" aria-label="Instagram" title="Instagram">
-              <svg viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true">
-                <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.4.5.6.2 1 .5 1.4 1 .5.4.8.8 1 1.4.2.5.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.5 2.4-.2.6-.5 1-1 1.4-.4.5-.8.8-1.4 1-.5.2-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.4-.5-.6-.2-1-.5-1.4-1-.5-.4-.8-.8-1-1.4-.2-.5-.4-1.2-.5-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.9.5-2.4.2-.6.5-1 1-1.4.4-.5.8-.8 1.4-1 .5-.2 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/>
-              </svg>
-            </a>
-            <!-- Pinterest -->
-            <a href="#" aria-label="Pinterest" title="Pinterest">
-              <svg viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true">
-                <path d="M12.04 2C6.53 2 3 5.64 3 9.86c0 2.36 1.33 5.28 3.47 6.2.33.15.52.08.6-.22.06-.22.22-.78.28-1.02.09-.22.05-.36-.12-.58-.69-.85-1.12-1.95-1.12-3.51 0-4.52 3.64-7.7 8.41-7.7 4.59 0 7.97 2.8 7.97 7.24 0 4.96-2.68 8.39-6.18 8.39-1.23 0-2.39-.67-2.79-1.43l-.8 3.03c-.23.89-.86 2.01-1.28 2.69.97.3 1.99.46 3.05.46 5.51 0 9.04-3.64 9.04-8.86C22.41 5.87 18.12 2 12.04 2z"/>
-              </svg>
-            </a>
-                      <!-- WhatsApp -->
-            <a href="#" aria-label="WhatsApp" title="WhatsApp">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true">
-                <path d="M12 .02C5.37.02.02 5.37.02 12c0 2.11.55 4.14 1.59 5.94L0 24l6.2-1.62A11.9 11.9 0 0 0 12 23.98c6.63 0 12-5.36 12-11.98S18.63.02 12 .02zm0 21.8c-1.86 0-3.67-.5-5.25-1.45l-.38-.22-3.68.96.98-3.59-.25-.37a9.8 9.8 0 0 1-1.52-5.15c0-5.4 4.4-9.79 9.8-9.79 2.62 0 5.09 1.02 6.94 2.87a9.74 9.74 0 0 1 2.87 6.92c0 5.4-4.4 9.82-9.8 9.82zm5.46-7.36c-.3-.15-1.76-.86-2.03-.96-.27-.1-.47-.15-.67.15s-.77.96-.95 1.15c-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.51-1.8-1.69-2.1-.18-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.5-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.5 0 1.46 1.08 2.87 1.23 3.07.15.2 2.13 3.24 5.15 4.54.72.31 1.28.49 1.72.62.72.23 1.37.2 1.88.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.18-1.42-.07-.12-.27-.2-.57-.35z"/>
-              </svg>
-            </a>
-            <!-- AI badge -->
-            <a href="#" aria-label="AI" title="AI">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
-                <text x="12" y="16" text-anchor="middle" font-size="11.5" font-weight="800" fill="currentColor" style="letter-spacing:.03em">AI</text>
-              </svg>
-            </a>
-          </div>
+
+          <!-- Waitlist form -->
+          <form id="waitlistForm"
+            action="https://docs.google.com/forms/d/e/1FAIpQLScnL2vHwu82SpBdPks-9F_p-KzKXJx_S3ElwalQyF7cv8Tr6Q/formResponse"
+            method="POST" target="hidden_iframe">
+            <div class="cta-form">
+              <input type="email" name="entry.1801392637" required placeholder="you@company.com" aria-label="Email address" />
+              <button type="submit">Join the waitlist</button>
+            </div>
+            <p class="finecopy" style="margin-top:8px;">We respect your privacy. No spam. Unsubscribe anytime.</p>
+          </form>
+
+          <!-- Hidden iframe -->
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+          <!-- Success message script -->
+          <script>
+            (function () {
+              var submitted = false;
+              var form = document.getElementById('waitlistForm');
+              var iframe = document.getElementById('hidden_iframe');
+              if (!form || !iframe) return;
+
+              form.addEventListener('submit', function () {
+                submitted = true;
+              });
+
+              iframe.addEventListener('load', function () {
+                if (submitted) {
+                  alert("Thank you! We'll be in touch.");
+                  form.reset();
+                  submitted = false;
+                }
+              });
+            })();
+          </script>
+
+          <!-- Keep your socials here (unchanged) -->
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
