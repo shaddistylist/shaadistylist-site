@@ -6,7 +6,8 @@
   <title>SHAADISTYLIST.AI — Heritage meets Innovation</title>
   <meta name="description" content="ShaadiStylist.ai — AI-powered data visualization & BI for the South Asian fashion and wedding ecosystem. Heritage meets Innovation." />
   <link rel="icon" href="https://favicon.io/favicon.ico" />
-    <!-- Open Graph / Social Sharing -->
+ 
+  <!-- Open Graph / Social Sharing -->
   <meta property="og:title" content="SHAADISTYLIST.AI — Heritage meets Innovation" />
   <meta property="og:description" content="AI-powered data visualization & BI for the South Asian fashion and wedding ecosystem. Heritage meets Innovation." />
   <meta property="og:type" content="website" />
@@ -18,6 +19,7 @@
   <meta name="twitter:title" content="SHAADISTYLIST.AI — Heritage meets Innovation" />
   <meta name="twitter:description" content="AI-powered dashboards for the South Asian wedding & fashion ecosystem." />
   <meta name="twitter:image" content="https://shaadistylist.ai/assets/logo-wordmark-tightcrop.png" />
+ 
   <!-- Body font fallback while Object Sans is licensed -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
@@ -37,6 +39,12 @@
     a{ color:inherit; text-decoration:none }
     a.underline{ text-decoration:underline; text-underline-offset:2px }
     footer{ background:var(--gardenia); color:var(--charcoal) }
+    /* Mobile color lock — remove later if not needed */
+@media (max-width:600px){
+  html, body, .final9-bg, .slide, footer, .topbar {
+    background: var(--gardenia) !important;
+  }
+}
 
     /* Header links */
     .nav{ display:flex; gap:16px; font-size:14px; padding:12px 20px; max-width:1200px; margin:0 auto; }
