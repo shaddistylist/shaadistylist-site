@@ -23,27 +23,25 @@
   <!-- Body font fallback while Object Sans is licensed -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-  <style>
-    :root{
-      --gardenia:#FCEEE4;
-      --charcoal:#2B2B2B;
-    }
-    *{ box-sizing:border-box }
-    html,body{
-      margin:0; height:100%;
-      background:var(--gardenia); color:var(--charcoal);
-      font-family:"Object Sans", Manrope, Inter, system-ui, Arial, sans-serif;
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-    }
-    a{ color:inherit; text-decoration:none }
-    a.underline{ text-decoration:underline; text-underline-offset:2px }
-    footer{ background:var(--gardenia); color:var(--charcoal) }
-    /* Mobile color lock — remove later if not needed */
-@media (max-width:600px){
-  html, body, .final9-bg, .slide, footer, .topbar {
-    background: var(--gardenia) !important;
+<style>
+  :root {
+    --gardenia: #FCEEE4;
+    --charcoal: #2B2B2B;
   }
-}
+
+  * { box-sizing: border-box }
+  html, body {
+    margin: 0; 
+    height: 100%;
+    background: var(--gardenia); 
+    color: var(--charcoal);
+    font-family: "Object Sans", Manrope, Inter, system-ui, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; 
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; text-decoration: none }
+  a.underline { text-decoration: underline; text-underline-offset: 2px }
+  footer { background: var(--gardenia); color: var(--charcoal) }
 
     /* Header links */
     .nav{ display:flex; gap:16px; font-size:14px; padding:12px 20px; max-width:1200px; margin:0 auto; }
