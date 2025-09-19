@@ -6,13 +6,25 @@
   <title>SHAADISTYLIST.AI — Heritage meets Innovation</title>
   <meta name="description" content="ShaadiStylist.ai — AI-powered data visualization & BI for the South Asian fashion and wedding ecosystem. Heritage meets Innovation." />
   <link rel="icon" href="https://favicon.io/favicon.ico" />
+    <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="SHAADISTYLIST.AI — Heritage meets Innovation" />
+  <meta property="og:description" content="AI-powered data visualization & BI for the South Asian fashion and wedding ecosystem. Heritage meets Innovation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shaadistylist.ai/" />
+  <meta property="og:image" content="https://shaadistylist.ai/assets/logo-wordmark-tightcrop.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SHAADISTYLIST.AI — Heritage meets Innovation" />
+  <meta name="twitter:description" content="AI-powered dashboards for the South Asian wedding & fashion ecosystem." />
+  <meta name="twitter:image" content="https://shaadistylist.ai/assets/logo-wordmark-tightcrop.png" />
   <!-- Body font fallback while Object Sans is licensed -->
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root{
       --gardenia:#FCEEE4;
-      --gardenia:#FCEEE4;
+      --lemongrass: var(--gardenia); /* force any legacy lemongrass to gardenia */
       --charcoal:#2B2B2B;
     }
     *{ box-sizing:border-box }
@@ -49,7 +61,6 @@
         width:100vw; max-width:100vw;
         height:auto; max-height:none;
       }
-      footer{ background:var(--gardenia;) }
     }
 
     /* iOS viewport stability + slides 1–8 full-bleed */
@@ -80,20 +91,18 @@
       .topbar { background: var(--gardenia); }
     }
 
-   /* Final slide (9) */
-.final9-bg {
-  min-height:100vh;
-  display:flex; align-items:center; justify-content:center;
-  background:var(--gardenia);  /* stays Gardenia by default */
-  padding:0 20px 96px;
-  scroll-snap-align:start;
-}
-
-/* Mobile override */
-@media (max-width:600px){
-  .final9-bg { background:var(--gardenia); }  /* switched from Lemongrass */
-}
+    /* Final slide (9) */
+    .final9-bg {
+      min-height:100vh;
+      display:flex; align-items:center; justify-content:center;
+      background:var(--gardenia);
+      padding:0 20px 96px;
+      scroll-snap-align:start;
     }
+    @media (max-width:600px){
+      .final9-bg { background:var(--gardenia); }
+    }
+
     .cta-overlay{
       width:min(96vw,1040px);
       display:flex; flex-direction:column; align-items:center;
@@ -113,7 +122,7 @@
       margin:0; font-weight:800; letter-spacing:-0.077em; white-space:nowrap;
       font-size:clamp(32px,4.2vw,58px); line-height:1.03;
     }
-    .strapline span{ font-weight:400; letter-spacing:-0.02em } /* “MEETS” not bold */
+    .strapline span{ font-weight:400; letter-spacing:-0.02em }
     .subline{
       margin:0; text-transform:uppercase; letter-spacing:.09em; opacity:.95;
       font-size:clamp(14px,2.2vw,22px); font-weight:400;
@@ -121,10 +130,10 @@
     .pre-cta{ margin:12px 0 0; font-size:clamp(17px,2.4vw,22px) }
     .finecopy{ margin:0; font-size:clamp(14px,1.9vw,18px) }
 
-    /* CTA — locked-in visual + width = logo width */
+    /* CTA form */
     .cta-form{
       display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:8px; width:100%;
-      max-width:clamp(380px,65vw,980px); /* match .logo-wordmark */
+      max-width:clamp(380px,65vw,980px); /* match logo width */
       margin-left:auto; margin-right:auto;
     }
     .cta-form input[type=email]{
@@ -138,29 +147,26 @@
       color:#fff; font-weight:800; cursor:pointer; font-size:clamp(15px,2vw,20px);
       white-space:nowrap;
     }
-    /* Desktop-only slightly larger controls */
     @media (min-width:901px){
       .cta-form input[type=email]{ padding:22px 24px; font-size:20px; }
       .cta-form button{ padding:22px 28px; font-size:20px; }
     }
 
+    /* Socials + footer */
     .socials{ display:flex; gap:30px; justify-content:center; align-items:center; margin-top:16px }
     .socials svg{ width:34px; height:34px }
     footer{ margin:18px 0; font-size:13px; opacity:.8; text-align:center }
 
-    /* Themed thank-you modal */
+    /* Modal */
     .modal-backdrop{
       position:fixed; inset:0; display:none; place-items:center;
       background:rgba(0,0,0,.35); z-index:50;
     }
     .modal{
-      background:var(--gardenia);   /* desktop theme */
+      background:var(--gardenia);
       color:var(--charcoal);
       width:min(92vw,520px); border-radius:18px; padding:22px 22px 18px;
       box-shadow:0 12px 40px rgba(0,0,0,.18);
-    }
-    @media (max-width:600px){
-      .modal{ background:var(--gardenia); } /* mobile theme */
     }
     .modal h3{ margin:0 0 6px; font-size:20px; font-weight:800; letter-spacing:-.01em }
     .modal p{ margin:0 0 14px; font-size:15px; opacity:.9 }
@@ -173,71 +179,62 @@
 </head>
 <body>
 
-  <!-- Header links -->
+  <!-- Header -->
   <div class="nav">
     <a href="#s1">Start</a>
     <a href="#waitlist">Waitlist</a>
   </div>
 
-  <!-- ===== Slides 1–8 (desktop + mobile via <picture>) ===== -->
+  <!-- Slides 1–8 -->
   <main class="wrap">
     <section id="s1" class="slide">
       <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide1.png" />
+        <source media="(max-width:600px)" srcset="assets/phone-slide1.png" />
         <img class="slide-img" src="assets/slide1.png" alt="Slide 1" />
       </picture>
     </section>
-
     <section id="s2" class="slide">
       <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide2.png" />
+        <source media="(max-width:600px)" srcset="assets/phone-slide2.png" />
         <img class="slide-img" src="assets/slide2.png" alt="Slide 2" />
       </picture>
     </section>
-
     <section id="s3" class="slide">
       <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide3.png" />
+        <source media="(max-width:600px)" srcset="assets/phone-slide3.png" />
         <img class="slide-img" src="assets/slide3.png" alt="Slide 3" />
       </picture>
     </section>
-
     <section id="s4" class="slide">
       <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide4.png" />
+        <source media="(max-width:600px)" srcset="assets/phone-slide4.png" />
         <img class="slide-img" src="assets/slide4.png" alt="Slide 4" />
       </picture>
     </section>
-
     <section id="s5" class="slide">
       <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide5.png" />
+        <source media="(max-width:600px)" srcset="assets/phone-slide5.png" />
         <img class="slide-img" src="assets/slide5.png" alt="Slide 5" />
       </picture>
     </section>
-
     <section id="s6" class="slide">
       <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide6.png" />
+        <source media="(max-width:600px)" srcset="assets/phone-slide6.png" />
         <img class="slide-img" src="assets/slide6.png" alt="Slide 6" />
       </picture>
     </section>
-
     <section id="s7" class="slide">
       <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide7.png" />
+        <source media="(max-width:600px)" srcset="assets/phone-slide7.png" />
         <img class="slide-img" src="assets/slide7.png" alt="Slide 7" />
       </picture>
     </section>
-
     <section id="s8" class="slide">
       <picture>
-        <source media="(max-width: 600px)" srcset="assets/phone-slide8.png" />
+        <source media="(max-width:600px)" srcset="assets/phone-slide8.png" />
         <img class="slide-img" src="assets/slide8.png" alt="Slide 8" />
       </picture>
     </section>
-
-    <!-- Paste PART 2 directly below this line -->
         <!-- Slide 9 — Waitlist -->
     <section id="waitlist" class="final9-bg" aria-labelledby="h1" aria-describedby="h2">
       <div class="cta-overlay">
@@ -258,7 +255,8 @@
             action="https://docs.google.com/forms/d/e/1FAIpQLScnL2vHwu82SpBdPks-9F_p-KzKXJx_S3ElwalQyF7cv8Tr6Q/formResponse"
             method="POST" target="hidden_iframe">
             <div class="cta-form">
-              <input id="email"
+              <input
+                id="email"
                 name="entry.1801392637"
                 type="email"
                 required
@@ -363,5 +361,6 @@
       </div>
     </section>
   </main>
+
 </body>
 </html>
