@@ -80,16 +80,19 @@
       .topbar { background: var(--lemongrass); }
     }
 
-    /* Final slide (9) */
-    .final9-bg{
-      min-height:100vh;
-      display:flex; align-items:center; justify-content:center;
-      background:var(--gardenia);
-      padding:0 20px 96px;
-      scroll-snap-align:start;
-    }
-    @media (max-width:600px){
-      .final9-bg{ background:var(--lemongrass); }
+   /* Final slide (9) */
+.final9-bg {
+  min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--gardenia);  /* stays Gardenia by default */
+  padding:0 20px 96px;
+  scroll-snap-align:start;
+}
+
+/* Mobile override */
+@media (max-width:600px){
+  .final9-bg { background:var(--gardenia); }  /* switched from Lemongrass */
+}
     }
     .cta-overlay{
       width:min(96vw,1040px);
