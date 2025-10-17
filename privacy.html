@@ -61,13 +61,21 @@
     <h2>Contact</h2>
     <p>Email: <a href="mailto:hello@shaadistylist.ai">hello@shaadistylist.ai</a></p>
 
-    <hr />
-    <footer>© 2025 ShaadiStylist.ai • <a href="/">Back to site</a></footer>
-  </main>
+     <hr />
+  <footer>
+    <p>© 2025 ShaadiStylist.ai · <a href="mailto:hello@shaadistylist.ai">hello@shaadistylist.ai</a></p>
+  </footer>
 
+  <!-- Auto-update "Last updated" date -->
   <script>
-    // auto-stamp today's date on first publish if you want
-    // document.getElementById('updated').textContent = new Date().toISOString().slice(0,10);
+    const d = new Date();
+    const formatted = d.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    });
+    const span = document.getElementById("updated");
+    if (span) span.textContent = formatted;
   </script>
 </body>
 </html>
