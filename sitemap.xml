@@ -2,7 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shaadistylist.ai/</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-17</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://shaadistylist.ai/privacy.html</loc>
+    <lastmod>2025-10-17</lastmod>
+    <priority>0.6</priority>
   </url>
 </urlset>
